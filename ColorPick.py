@@ -26,4 +26,4 @@ class ColorPickCommand(sublime_plugin.TextCommand):
       word = view.word(region)
       if view.substr(word.a - 1) == '#':
         word = sublime.Region(word.a - 1, word.b)
-      self.view.replace(edit, word, color)
+      self.view.replace(edit, word, '#' + color)
