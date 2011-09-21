@@ -15,7 +15,7 @@ class ColorPickCommand(sublime_plugin.TextCommand):
 
     # get new color from picker
     args = [path.join(sublime.packages_path(), 'ColorPick', 'bin', 'colorpick')]
-    if selected != None and len(selected) == 6:
+    if selected != None and (len(selected) == 6 or len(selected) == 3):
       args.append('-startColor')
       args.append(selected)
     proc = subprocess.Popen(args, stdout=subprocess.PIPE)
