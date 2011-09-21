@@ -21,9 +21,10 @@ class ColorPickCommand(sublime_plugin.TextCommand):
     proc = subprocess.Popen(args, stdout=subprocess.PIPE)
     color = proc.communicate()[0]
 
-    # replace all regions with color
-    for region in sel:
-      word = view.word(region)
-      if view.substr(word.a - 1) == '#':
-        word = sublime.Region(word.a - 1, word.b)
-      self.view.replace(edit, word, '#' + color)
+    if color:
+      # replace all regions with color
+      for region in sel:
+         word = view.word(region)
+         if view.substr(word.a - 1) == '#':
+            word = sublime.Region(word.a - 1, word.b)
+         self.view.replace(edit, word, '#' + color)
