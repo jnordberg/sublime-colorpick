@@ -15,15 +15,18 @@ class ColorPickCommand(sublime_plugin.TextCommand):
 
     # get new color from picker
     args = [path.join(sublime.packages_path(), 'ColorPick', 'bin', 'colorpick')]
-    if selected != None and len(selected) == 6:
+    if selected != None and (len(selected) == 6 or len(selected) == 3):
       args.append('-startColor')
       args.append(selected)
     proc = subprocess.Popen(args, stdout=subprocess.PIPE)
     color = proc.communicate()[0]
-
-    # replace all regions with color
-    for region in sel:
-      word = view.word(region)
-      if view.substr(word.a - 1) == '#':
-        word = sublime.Region(word.a - 1, word.b)
-      self.view.replace(edit, word, '#' + color)
+    
+    if color:
+      # replace all regions with color
+      for region in sel:
+        word = view.word(region)
+        if view.substr(word.a - 1) == '#':
+          word = sublime.Region(word.a - 1, word.b)
+          self.view.replace(edit, word, '#' + color)
+        else:
+          self.view.insert(edit, sel[0].begin(), '#' + color)
