@@ -2,11 +2,12 @@ import sublime, sublime_plugin
 import subprocess
 from os import path
 
-def is_hex(s):
+def is_valid_hex_color(s):
+  if len(s) not in (3, 6):
+    return False
   try:
-    int('0x' + s, 16)
-    return True
-  except:
+    return 0 <= int(s, 16) <= 0xffffff
+  except ValueError:
     return False
 
 class ColorPickCommand(sublime_plugin.TextCommand):
@@ -19,7 +20,7 @@ class ColorPickCommand(sublime_plugin.TextCommand):
     if len(sel) > 0:
       selected = view.substr(view.word(sel[0])).strip()
       if selected.startswith('#'): selected = selected[1:]
-      if is_hex(selected) and (len(selected) == 6 or len(selected) == 3):
+      if is_valid_hex_color(selected):
         start_color = selected
 
     # get new color from picker
