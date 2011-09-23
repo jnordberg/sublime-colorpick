@@ -35,8 +35,13 @@ class ColorPickCommand(sublime_plugin.TextCommand):
       # replace all regions with color
       for region in sel:
         word = view.word(region)
-        if view.substr(word.a - 1) == '#':
-          word = sublime.Region(word.a - 1, word.b)
+        # if the selected word is a valid color, replace it
+        if is_valid_hex_color(view.substr(word)):
+          # include '#' if present
+          if view.substr(word.a - 1) == '#':
+            word = sublime.Region(word.a - 1, word.b)
+          # replace
           self.view.replace(edit, word, '#' + color)
+        # otherwise just replace the selected region
         else:
           self.view.replace(edit, region, '#' + color)
