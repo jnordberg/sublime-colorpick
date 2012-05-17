@@ -4,7 +4,7 @@ Color picker plugin for Sublime Text 2 (Mac OS X)
 
 ## about
 
-For me, a colorpicker is the last piece of the pussle to make Sublime Text 2 a complete
+For me, a colorpicker is the last piece of the puzzle to make Sublime Text 2 a complete
 TextMate replacement. Et voilà!
 
 Source for the colorpick binary can be found at https://github.com/jnordberg/color-pick
