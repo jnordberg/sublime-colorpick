@@ -1,8 +1,9 @@
 import sublime
 import sublime_plugin
 import subprocess
-from os import path
+import os
 
+picker_path = os.path.join(sublime.packages_path(), 'ColorPick', 'bin', 'colorpick')
 
 def is_valid_hex_color(s):
     if len(s) not in (3, 6):
@@ -12,12 +13,15 @@ def is_valid_hex_color(s):
     except ValueError:
         return False
 
-
 class ColorPickCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         view = self.view
         sel = view.sel()
         start_color = None
+
+        # make sure color picker binary is executable
+        if not os.access(picker_path, os.X_OK):
+            os.chmod(picker_path, 0755)
 
         # get the currently selected color - if any
         if len(sel) > 0:
@@ -29,7 +33,7 @@ class ColorPickCommand(sublime_plugin.TextCommand):
                 start_color = selected
 
         # get new color from picker
-        args = [path.join(sublime.packages_path(), 'ColorPick', 'bin', 'colorpick')]
+        args = [picker_path]
         if start_color:
             args.append('-startColor')
             args.append(start_color)
