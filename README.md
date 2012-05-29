@@ -2,6 +2,8 @@
 
 Color picker plugin for Sublime Text 2 (Mac OS X)
 
+![ColorPick](http://xn--bl-wia.se/2dd90c2d73.png)
+
 ## about
 
 For me, a colorpicker is the last piece of the puzzle to make Sublime Text 2 a complete
