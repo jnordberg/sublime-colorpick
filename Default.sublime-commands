@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Color Picker: Insert Color",
+        "command": "color_pick"
+    }
+]
