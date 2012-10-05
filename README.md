@@ -24,3 +24,20 @@ It's important that you check out the repo as ColorPick as the plugin will look 
 `cmd+shift+c` to insert a color
 
 or bind it to a key of your choosing, the command is `color_pick`
+
+## options
+
+If you prefer your colors to be uppercase (`#FF0000` vs `#ff0000`), set the `color_pick_upcase` option in your user settings (`cmd+comma`)
+
+Example:
+
+```json
+{
+  "font_face": "Menlo",
+  "font_size": 11.0,
+  "tab_size": 2,
+  "word_wrap": true,
+  "wrap_width": 90, 
+  "color_pick_upcase": true
+}
+```

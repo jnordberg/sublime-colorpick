@@ -41,6 +41,10 @@ class ColorPickCommand(sublime_plugin.TextCommand):
         color = proc.communicate()[0]
 
         if color:
+            # upcase color if option set
+            user_settings = sublime.load_settings("Preferences.sublime-settings")
+            if user_settings.get("color_pick_upcase", False):
+                color = color.upper()
             # replace all regions with color
             for region in sel:
                 word = view.word(region)
