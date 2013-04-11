@@ -21,7 +21,7 @@ class ColorPickCommand(sublime_plugin.TextCommand):
 
         # make sure color picker binary is executable
         if not os.access(picker_path, os.X_OK):
-            os.chmod(picker_path, 0755)
+            os.chmod(picker_path, 755)
 
         # get the currently selected color - if any
         if len(sel) > 0:
