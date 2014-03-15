@@ -38,7 +38,7 @@ class ColorPickCommand(sublime_plugin.TextCommand):
             args.append('-startColor')
             args.append(start_color)
         proc = subprocess.Popen(args, stdout=subprocess.PIPE)
-        color = proc.communicate()[0]
+        color = proc.communicate()[0].decode('utf-8')
 
         if color:
             # upcase color if option set
