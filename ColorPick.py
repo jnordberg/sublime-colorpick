@@ -3,7 +3,8 @@ import sublime_plugin
 import subprocess
 import os
 
-picker_path = os.path.join(sublime.packages_path(), 'ColorPick', 'bin', 'colorpick')
+package_dir = os.path.dirname(os.path.realpath(__file__))
+picker_path = os.path.join(package_dir, 'bin', 'colorpick')
 
 def is_valid_hex_color(s):
     if len(s) not in (3, 6):
