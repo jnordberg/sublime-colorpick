@@ -1,6 +1,6 @@
 # sublime-colorpick
 
-Color picker plugin for Sublime Text 2 (Mac OS X)
+Color picker plugin for Sublime Text 2 and 3 (Mac OS X)
 
 ![ColorPick](http://xn--bl-wia.se/2dd90c2d73.png)
 
@@ -15,9 +15,6 @@ Source for the colorpick binary can be found at https://github.com/jnordberg/col
 
     cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages
     git clone git://github.com/jnordberg/sublime-colorpick.git ColorPick
-
-It's important that you check out the repo as ColorPick as the plugin will look for the binary in
-`<sublime packages dir>/ColorPick/bin/colorpick`
 
 ## usage
 
